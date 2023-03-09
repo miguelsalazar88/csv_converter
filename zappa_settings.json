@@ -1,0 +1,28 @@
+{
+    "dev": {
+        "app_function": "converter.convert",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "profile_name": null,
+        "aws_region": "us-east-1",
+        "project_name": "pruebas-convert",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-3g1ctbyld",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        
+        "events": [
+            {
+                "function": "converter.convert",
+                "event_source": {
+                    "arn": "arn:aws:s3:::landing-casas-salazar-bermudez",
+                    "batch_size": 1,
+                    "enabled": true,
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ]
+                }
+            }
+        ]
+    }
+}
